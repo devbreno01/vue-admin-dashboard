@@ -37,3 +37,6 @@
     
     --color-overlay: rgba(0, 0, 0, 0.5);
 }
+body{
+    font-family: 'Inter', sans-serif;
+}
