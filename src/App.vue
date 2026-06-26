@@ -8,60 +8,57 @@
 
   const visible = ref(true)
 </script>
-<template>
-    <Drawer v-model:visible="visible" header="BrenoAdmin"  class="bg-sidebar!">
-      <nav class="" >
-          <ul class="sidebar-ul">
-              <li class="mb-4 h-12 flex items-center">
-                <i class="pi pi-home ml-3" style="font-size: 1rem;"></i>
-                  <router-link to="/">
-                    <a href="#" class="ml-2 text-lg">Dashboard</a>
-                  </router-link>
-                
-              </li>
-               <li class="mb-4 h-12 flex items-center">
-                <i class="pi pi-box ml-3" style="font-size: 1rem;"></i>
-                  <router-link to="/">
-                    <a href="#" class="ml-2 text-lg">Products</a>
-                  </router-link>
-                
-              </li>
-              <li class="mb-4 h-12 flex items-center">
-                <i class="pi pi-folder ml-3" style="font-size: 1rem;"></i>
-                  <router-link to="/">
-                    <a href="#" class="ml-2 text-lg">Categories</a>
-                  </router-link>
-                
-              </li>
-              <li class="mb-4 h-12 flex items-center">
-                <i class="pi pi-shopping-bag ml-3" style="font-size: 1rem;"></i>
-                  <router-link to="/">
-                    <a href="#" class="ml-2 text-lg">Orders</a>
-                  </router-link>
-                
-              </li>
-              <li class="mb-4 h-12 flex items-center">
-                <i class="pi pi-user ml-3" style="font-size: 1rem;"></i>
-                  <router-link to="/">
-                    <a href="#" class="ml-2 text-lg">Users</a>
-                  </router-link>
-                
-              </li>
-               <li class="mb-4 h-12 flex items-center">
-                <i class="pi pi-cog ml-3" style="font-size: 1rem;"></i>
-                  <router-link to="/">
-                    <a href="#" class="ml-2 text-lg">Settings</a>
-                  </router-link>
-                
-              </li>
-          </ul>
-      </nav>
-    </Drawer>
 
-   <Button icon="pi pi-arrow-right" @click="visible = true" />
-    <main>
-      <p>tasdasdasd</p>
+
+<template>
+  <div class="flex h-screen bg-background">
+   
+    <aside class="w-64 bg-sidebar flex-shrink-0 flex flex-col  p-4 ">
+      <div class="flex items-center mb-2 ">
+          <i class="pi pi-box text-primary ml-3" style="font-size: 1.5rem;"></i>
+          <label class="p-4 text-xl font-bold">BrenoAdmin</label>
+      </div>
+      <nav class="">
+        <ul>
+           <li class="mb-4 h-12 flex items-center rounded cursor-pointer"
+                :class="{ 'bg-primary': $route.path === '/' }">
+              <i class="pi pi-home ml-3" style="font-size: 1rem;"></i>
+              <router-link to="/" class="ml-2 text-lg" exact-active-class="text-white font-bold">Dashboard</router-link>
+            </li>
+
+          <li class="mb-4 h-12 flex items-center rounded cursor-pointer" 
+          :class="{ 'bg-primary': $route.path === '/products' }">
+            <i class="pi pi-box ml-3" style="font-size: 1rem;"></i>
+            <router-link to="/products" class="ml-2 text-lg" exact-active-class="text-white font-bold">Products</router-link>
+          </li>
+
+           <li class="mb-4 h-12 flex items-center rounded cursor-pointer" 
+          :class="{ 'bg-primary': $route.path === '/categories' }">
+            <i class="pi pi-bars ml-3" style="font-size: 1rem;"></i>
+            <router-link to="/categories" class="ml-2 text-lg" exact-active-class="text-white font-bold">Categories</router-link>
+          </li>
+
+           <li class="mb-4 h-12 flex items-center rounded cursor-pointer" 
+          :class="{ 'bg-primary': $route.path === '/orders' }">
+            <i class="pi pi-shop ml-3" style="font-size: 1rem;"></i>
+            <router-link to="/orders" class="ml-2 text-lg" exact-active-class="text-white font-bold">Orders</router-link>
+          </li>
+
+          <li class="mb-4 h-12 flex items-center rounded cursor-pointer" 
+          :class="{ 'bg-primary': $route.path === '/users' }">
+            <i class="pi pi-users ml-3" style="font-size: 1rem;"></i>
+            <router-link to="/users" class="ml-2 text-lg" exact-active-class="text-white font-bold">Users</router-link>
+          </li>
+         
+        </ul>
+      </nav>
+    </aside>
+
+   
+    <main class="flex-1 overflow-auto p-4">
+      <router-view />
     </main>
+  </div>
 </template>
 
 <style scoped></style>
